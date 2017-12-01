@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Notas Ionic
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let nota of notas" (click)="gotoDetalhe(nota.id)">
+      {{ nota.title }}
+    </button>  
+  </ion-list>
+  <div padding>
+    <button ion-button block (click)="createNota()">Criar Nota</button>
+  </div>
+</ion-content>
