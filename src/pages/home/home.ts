@@ -14,7 +14,8 @@ export class HomePage {
   @ViewChild('myNav') nav: NavController
 
   constructor(public navCtrl: NavController, public notasService : NotasService) {
-    this.notas = notasService.getNotas();
+   notasService.getNotas().valueChanges().subscribe(notas => {this.notas = notas});
+    
   }
 
   public gotoDetalhe(id){

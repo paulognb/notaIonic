@@ -23,7 +23,9 @@ export class DetalhePage {
     this.id = navParams.get('id');
 
     if(this.id !=0){
-      this.nota = notasService.getNota(this.id);
+      notasService.getNota(this.id).valueChanges().subscribe(
+        nota => {this.nota = nota;}
+      );
     }
   
   }
@@ -33,10 +35,21 @@ export class DetalhePage {
   }
 
   addNota(){
-    this.nota.id = Date.now();
-    this.notasService.createNota(this.nota);
-    alert('Nota criada com sucesso!');
+    if(this.id != 0){
+      this.notasService.editNota(this.nota);
+      alert('Nota atualizada com sucesso!');
+    }
+    else{
+      this.nota.id = Date.now();
+      this.notasService.createNota(this.nota);
+      alert('Nota criada com sucesso!');
+    }  
     this.navCtrl.pop();
   }
-
+  
+  deleteNota(nota){
+    this.notasService.deleteNota(this.nota);
+    alert('Nota apagada com sucesso!');
+    this.navCtrl.pop();
+  }
 }

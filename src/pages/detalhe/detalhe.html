@@ -26,4 +26,5 @@
     </ion-item>
   </ion-list>
   <button ion-button block (click)="addNota()">Salvar Nota</button>
+  <button *ngIf="id!=0" ion-button block (click)="deleteNota()" color="danger">Apagar Nota</button>
 </ion-content>
